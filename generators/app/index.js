@@ -64,7 +64,7 @@ module.exports = class extends Generator {
     );
     this.fs.copyTpl(
       this.templatePath('component/index.template'),
-      this.destinationPath(`${path}${componentName}/index.tsx`),
+      this.destinationPath(`${path}${componentName}/index.ts`),
       {
         name: componentName
       }
