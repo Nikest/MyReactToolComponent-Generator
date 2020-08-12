@@ -1,0 +1,35 @@
+import * as React from 'react';
+<% if(componentFunction) {%>
+import { sl } from 'reactstyleloaddecorator';
+<% } else { %>
+import { cd } from 'reactstyleloaddecorator';
+<% } %>
+
+interface I<%= name %>Props {
+
+}
+
+<% if(!componentFunction) {%>
+interface I<%= name %>State {
+
+}
+
+@cd(() => require('./<%= name %>.scss'))
+export class <%= name %> extends React.Component<I<%= name %>Props, I<%= name %>State> {
+    render(c?) {
+        return (
+            <<%= tag %> className={c('container')}><%= name %></<%= tag %>>
+        )
+    }
+}
+
+<% } else { %>
+export const <%= name %> = function({}:I<%= name %>Props) {
+    const c = sl(() => require('./<%= name %>.scss'));
+
+    return (
+        <<%= tag %> className={c('container')}><%= name %></<%= tag %>>
+    )
+};
+<% } %>
+
